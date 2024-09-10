@@ -1,12 +1,12 @@
 from django.db import models
 
-# Create your models here.
 
 class TimeStamp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         abstract = True
+
 
 class WhyUs(TimeStamp):
     title = models.CharField(max_length=212)
@@ -21,6 +21,7 @@ class Order(TimeStamp):
     phone_number = models.CharField(max_length=212)
     is_checked = models.BooleanField(default=False)
     services = models.ForeignKey('Services', on_delete=models.CASCADE)
+
     def __str__(self):
         return self.full_name
 
@@ -56,6 +57,7 @@ class Certificate(TimeStamp):
     def __str__(self):
         return self.title
 
+
 class ClientsFeedback(TimeStamp):
     full_name = models.CharField(max_length=212)
     image = models.ImageField(upload_to='feedback/')
@@ -78,6 +80,7 @@ class ServiceInfo(TimeStamp):
 
 class Services(TimeStamp):
     title = models.CharField(max_length=212)
+
 
 class Projects(TimeStamp):
     title = models.CharField(max_length=212)
