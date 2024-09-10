@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import *
 
-urlpatterns =  [
+urlpatterns = [
     path('team/', TeamView.as_view(), name='team'),
     path('order/', OrderView.as_view(), name='order'),
     path('subscribe/', SubscribeView.as_view(), name='subscribe'),
@@ -14,6 +14,5 @@ urlpatterns =  [
     path('whyus/', WhyUsView.as_view(), name='whyus'),
     path('partners/', PartnersView.as_view(), name='partners'),
     path('about/', AboutView.as_view(), name='about'),
-
 
 ]
