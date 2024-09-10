@@ -12,13 +12,14 @@ from .models import (WhyUs,
                      Order,
                      Partnership,
                      ClientsFeedback,
-                     About,)
+                     About, )
+from modeltranslation.admin import TranslationAdmin
 
 
 # Register your models here.
 
 @admin.register(WhyUs)
-class WhyUsAdmin(admin.ModelAdmin):
+class WhyUsAdmin(TranslationAdmin):
     list_display = ('id', 'title',)
     list_display_links = ('id', 'title',)
 
@@ -33,7 +34,6 @@ class ServicesAdmin(admin.ModelAdmin):
     class ServiceInfoInline(admin.TabularInline):
         model = ServiceInfo
         extra = 1
-
 
     inlines = [ServiceInfoInline]
 
@@ -69,7 +69,7 @@ class SubscribeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Team)
-class TeamAdmin(admin.ModelAdmin):
+class TeamAdmin(TranslationAdmin):
     list_display = ('id', 'full_name', 'occupation',)
     list_display_links = ('id', 'full_name', 'occupation',)
     search_fields = ('full_name',)
@@ -77,19 +77,20 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 @admin.register(FAQ)
-class FAQAdmin(admin.ModelAdmin):
+class FAQAdmin(TranslationAdmin):
     list_display = ('id', 'type',)
     list_display_links = ('id', 'type',)
     list_filter = ('type',)
 
+
 @admin.register(About)
-class AboutAdmin(admin.ModelAdmin):
+class AboutAdmin(TranslationAdmin):
     list_display = ('id', 'title')
     list_display_links = ('id', 'title')
 
 
-admin.site.register(Certificate)
+admin.site.register(Certificate, TranslationAdmin)
 # admin.site.register(ServiceInfo)
 admin.site.register(Partnership)
 admin.site.register(SocialMedia)
-admin.site.register(FAQType)
+admin.site.register(FAQType, TranslationAdmin)

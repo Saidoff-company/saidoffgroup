@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# Create your models here.
 
 class TimeStamp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -83,6 +82,7 @@ class ServiceInfo(TimeStamp):
 
 class Services(TimeStamp):
     title = models.CharField(_("title"), max_length=212)
+
 
 
 class Projects(TimeStamp):
