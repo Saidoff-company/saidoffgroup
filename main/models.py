@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 
 # Create your models here.
 
@@ -8,25 +10,27 @@ class TimeStamp(models.Model):
     class Meta:
         abstract = True
 
+
 class WhyUs(TimeStamp):
-    title = models.CharField(max_length=212)
-    description = models.TextField()
+    title = models.CharField(_("title"), max_length=212)
+    description = models.TextField(_("description"))
 
     def __str__(self):
         return self.title
 
 
 class Order(TimeStamp):
-    full_name = models.CharField(max_length=212)
+    full_name = models.CharField(_("full_name"), max_length=212)
     phone_number = models.CharField(max_length=212)
     is_checked = models.BooleanField(default=False)
     services = models.ForeignKey('Services', on_delete=models.CASCADE)
+
     def __str__(self):
         return self.full_name
 
 
 class Subscribe(TimeStamp):
-    full_name = models.CharField(max_length=212)
+    full_name = models.CharField(_("full_name"), max_length=212)
     phone_number = models.CharField(max_length=212)
     is_checked = models.BooleanField(default=False)
 
@@ -35,7 +39,7 @@ class Subscribe(TimeStamp):
 
 
 class Team(TimeStamp):
-    full_name = models.CharField(max_length=212)
+    full_name = models.CharField(_("full_name"), max_length=212)
     occupation = models.CharField(max_length=212)
     image = models.ImageField(upload_to='team/')
     description = models.TextField()
@@ -49,18 +53,19 @@ class Partnership(TimeStamp):
 
 
 class Certificate(TimeStamp):
-    title = models.CharField(max_length=212)
-    information = models.TextField()
+    title = models.CharField(_("title"), max_length=212)
+    information = models.TextField(_("information"))
     image = models.ImageField(upload_to='certificate/')
 
     def __str__(self):
         return self.title
 
+
 class ClientsFeedback(TimeStamp):
-    full_name = models.CharField(max_length=212)
+    full_name = models.CharField(_("full_name"), max_length=212)
     image = models.ImageField(upload_to='feedback/')
-    profession = models.CharField(max_length=212)
-    message = models.TextField()
+    profession = models.CharField(_("profession"), max_length=212)
+    message = models.TextField(_("message"))
 
     def __str__(self):
         return self.full_name
@@ -69,7 +74,7 @@ class ClientsFeedback(TimeStamp):
 class ServiceInfo(TimeStamp):
     title = models.CharField(max_length=212)
     image = models.ImageField(upload_to='service/')
-    description = models.TextField()
+    description = models.TextField(_("description"))
     services = models.ForeignKey('Services', on_delete=models.CASCADE, related_name='service_info')
 
     def __str__(self):
@@ -77,10 +82,11 @@ class ServiceInfo(TimeStamp):
 
 
 class Services(TimeStamp):
-    title = models.CharField(max_length=212)
+    title = models.CharField(_("title"), max_length=212)
+
 
 class Projects(TimeStamp):
-    title = models.CharField(max_length=212)
+    title = models.CharField(_("title"), max_length=212)
     service = models.ForeignKey('Services', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='project/')
     link = models.URLField(null=True, blank=True)
@@ -95,22 +101,22 @@ class SocialMedia(TimeStamp):
 
 
 class FAQType(TimeStamp):
-    title = models.CharField(max_length=212)
+    title = models.CharField(_("title"), max_length=212)
 
     def __str__(self):
         return self.title
 
 
 class FAQ(TimeStamp):
-    question = models.TextField()
-    answer = models.TextField()
+    question = models.TextField(_("question"))
+    answer = models.TextField(_("answer"))
     type = models.ForeignKey('FAQType', on_delete=models.CASCADE)
 
 
 class About(TimeStamp):
-    title = models.CharField(max_length=212)
+    title = models.CharField(_("title"), max_length=212)
     image = models.ImageField(upload_to='about/')
-    description = models.TextField()
+    description = models.TextField(_("description"))
 
     def __str__(self):
         return self.title
