@@ -1,3 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
+from drf_yasg.openapi import Response
+
+from main.filters import ProjectFilter
 from .models import *
 from .serializers import *
 from rest_framework import generics
@@ -19,8 +23,10 @@ class TeamView(generics.ListAPIView):
 
 
 class ProjectsView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = Projects.objects.all()
+    serializer_class = ProjectSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ProjectFilter
 
 
 class ServiceView(generics.ListAPIView):

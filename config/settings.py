@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'django_filters',
 
     # built in apps
     'main',
@@ -105,6 +106,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static/'
 
 MEDIA_URL = '/media/'
 
@@ -177,3 +179,8 @@ LANGUAGES = (
     ('ru', 'Russian'),
     ('en', 'English'),
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'main.pagination.PageNumberPagination',
+    'PAGE_SIZE': 9,
+}
