@@ -19,8 +19,13 @@ class TeamView(generics.ListAPIView):
 
 
 class ProjectsView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    serializer_class = ProjectSerializer
+
+    def get_queryset(self):
+        service_name = self.kwargs.get('service_name')
+        if service_name:
+            return Projects.objects.filter(service__name=service_name)
+        return Projects.objects.all()
 
 
 class ServiceView(generics.ListAPIView):
