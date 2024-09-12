@@ -23,7 +23,7 @@ class Order(TimeStamp):
     phone_number = models.CharField(max_length=212)
     is_checked = models.BooleanField(default=False)
     services = models.ForeignKey('Services', on_delete=models.CASCADE)
-
+    message = models.TextField()
     def __str__(self):
         return self.full_name
 
