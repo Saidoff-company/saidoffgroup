@@ -44,23 +44,23 @@ class ServiceInfoView(generics.ListAPIView):
 
 
 class ClientsFeedbackView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = ClientsFeedback.objects.all()
+    serializer_class = ClientsFeedbackSerializer
 
 
 class CertificateView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer
 
 
 class FAQView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = FAQ.objects.all()
+    serializer_class = FAQSerializer
 
 
 class FAQTypeView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = FAQType.objects.all()
+    serializer_class = FAQTypeSerializer
 
 
 class WhyUsView(generics.ListAPIView):

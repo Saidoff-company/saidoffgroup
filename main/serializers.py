@@ -5,43 +5,43 @@ from .models import *
 class WhyUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyUs
-        fields = '__all__'
+        fields = ['id', 'title', 'description']
 
 
 class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
-        fields = '__all__'
+        fields = ['id', 'information', 'image']
 
 
 class SocialMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocialMedia
-        fields = '__all__'
+        fields = ['id', 'icon', 'link']
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscribe
-        fields = '__all__'
+        fields = ['id', 'full_name', 'phone_number']
 
 
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partnership
-        fields = '__all__'
+        fields = ['id', 'image']
 
 
 class ClientsFeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientsFeedback
-        fields = '__all__'
+        fields = ['id', 'full_name', 'image', 'profession', 'message']
 
 
 class ServiceInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceInfo
-        fields = '__all__'
+        fields = ['id', 'title', 'image', 'description', 'services']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = '__all__'
+        fields = ['id', 'full_name', 'occupation', 'image']
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -82,6 +82,7 @@ class FAQSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     service = ServiceSerializer(read_only=True)
+
     class Meta:
         model = Order
         fields = '__all__'
