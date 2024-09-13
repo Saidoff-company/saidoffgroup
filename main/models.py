@@ -80,7 +80,7 @@ class ServiceInfo(TimeStamp):
         return self.title
 
 
-class Services(TimeStamp):
+class   Services(TimeStamp):
     title = models.CharField(_("title"), max_length=212)
 
 
