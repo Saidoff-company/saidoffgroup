@@ -92,3 +92,21 @@ class AboutSerializers(serializers.ModelSerializer):
     class Meta:
         model = About
         fields = '__all__'
+
+
+class PricePlanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PricePlan
+        fields = ('title', 'limit_date', 'limit_user', 'features')
+
+
+class FeaturesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feature
+        fields = ('title', 'tick')
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'title')

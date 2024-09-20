@@ -1,18 +1,5 @@
 from django.contrib import admin
-from .models import (WhyUs,
-                     Certificate,
-                     Services,
-                     ServiceInfo,
-                     SocialMedia,
-                     Subscribe,
-                     Projects,
-                     Team,
-                     FAQ,
-                     FAQType,
-                     Order,
-                     Partnership,
-                     ClientsFeedback,
-                     About, )
+from .models import *
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -88,9 +75,23 @@ class AboutAdmin(TranslationAdmin):
     list_display = ('id', 'title')
     list_display_links = ('id', 'title')
 
+@admin.register(Feature)
+class FeatureAdmin(TranslationAdmin):
+    list_display = ('id', 'title', 'tick')
+    list_display_links = ('id',)
+
+
+@admin.register(PricePlan)
+class PricePlanAdmin(TranslationAdmin):
+    list_display = ('id', 'title', 'price', 'limit_date', 'limit_user')
+    list_display_links = ('id',)
+
+
 
 admin.site.register(Certificate, TranslationAdmin)
 # admin.site.register(ServiceInfo)
 admin.site.register(Partnership)
 admin.site.register(SocialMedia)
 admin.site.register(FAQType, TranslationAdmin)
+
+

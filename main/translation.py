@@ -45,3 +45,13 @@ class WhyUsTranslation(TranslationOptions):
 @register(models.About)
 class WhyUsTranslation(TranslationOptions):
     fields = ('title', 'description')
+
+
+@register(models.Feature)
+class FeatureTranslation(TranslationOptions):
+    fields = ('title',)
+
+
+@register(models.PricePlan)
+class PricePlanTranslation(TranslationOptions):
+    fields = ('title',)
