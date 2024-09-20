@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-
 class TimeStamp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -80,9 +79,12 @@ class ServiceInfo(TimeStamp):
         return self.title
 
 
-class   Services(TimeStamp):
+class Services(TimeStamp):
     title = models.CharField(_("title"), max_length=212)
 
+
+class Tag(models.Model):
+    title = models.CharField(_("title"), max_length=125)
 
 
 class Projects(TimeStamp):
@@ -90,6 +92,7 @@ class Projects(TimeStamp):
     service = models.ForeignKey('Services', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='project/')
     link = models.URLField(null=True, blank=True)
+    tags = models.ManyToManyField('Tag')
 
     def __str__(self):
         return self.title
@@ -117,6 +120,24 @@ class About(TimeStamp):
     title = models.CharField(_("title"), max_length=212)
     image = models.ImageField(upload_to='about/')
     description = models.TextField(_("description"))
+
+    def __str__(self):
+        return self.title
+
+
+class Feature(models.Model):
+    title = models.CharField(_("title"), max_length=125)
+    tick = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+class PricePlan(models.Model):
+    title = models.CharField(_("title"), max_length=125)
+    price = models.IntegerField()
+    limit_date = models.CharField(max_length=125)
+    limit_user = models.CharField(max_length=125)
+    features = models.ManyToManyField(Feature)
 
     def __str__(self):
         return self.title

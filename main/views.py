@@ -76,3 +76,18 @@ class PartnersView(generics.ListAPIView):
 class AboutView(generics.ListAPIView):
     queryset = About.objects.all()
     serializer_class = AboutSerializers
+
+
+class PricePlanView(generics.ListAPIView):
+    queryset = PricePlan.objects.all()
+    serializer_class = PricePlanSerializer
+
+
+class TagListView(generics.ListAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
+class FeaturesListView(generics.ListAPIView):
+    queryset =  Feature.objects.all()
+    serializer_class = FeaturesSerializer
