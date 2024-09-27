@@ -97,7 +97,7 @@ class AboutSerializers(serializers.ModelSerializer):
 class PricePlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = PricePlan
-        fields = ('title', 'limit_date', 'limit_user', 'features')
+        fields = ('title', 'limit_date', 'limit_user', 'features', 'price')
 
 
 class FeaturesSerializer(serializers.ModelSerializer):
