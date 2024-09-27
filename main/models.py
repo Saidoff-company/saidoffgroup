@@ -134,7 +134,7 @@ class Feature(models.Model):
 
 class PricePlan(models.Model):
     title = models.CharField(_("title"), max_length=125)
-    price = models.IntegerField()
+    price = models.FloatField()
     limit_date = models.CharField(max_length=125)
     limit_user = models.CharField(max_length=125)
     features = models.ManyToManyField(Feature)
