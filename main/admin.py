@@ -12,7 +12,9 @@ from .models import (WhyUs,
                      Order,
                      Partnership,
                      ClientsFeedback,
-                     About, )
+                     About,
+                     ServiceType,
+                     Tag)
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -89,8 +91,19 @@ class AboutAdmin(TranslationAdmin):
     list_display_links = ('id', 'title')
 
 
+class ServiceInline(admin.StackedInline):
+    model = Services
+    extra = 0
+
+
+@admin.register(ServiceType)
+class ServiceTypeAdmin(TranslationAdmin):
+    list_display = ('id', 'title',)
+    inlines = [ServiceInline]
+
+
 admin.site.register(Certificate, TranslationAdmin)
-# admin.site.register(ServiceInfo)
 admin.site.register(Partnership)
 admin.site.register(SocialMedia)
 admin.site.register(FAQType, TranslationAdmin)
+admin.site.register(Tag)

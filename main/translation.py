@@ -28,7 +28,7 @@ class WhyUsTranslation(TranslationOptions):
 
 
 @register(models.Services)
-class WhyUsTranslation(TranslationOptions):
+class ServicesTranslation(TranslationOptions):
     fields = ('title',)
 
 
@@ -45,3 +45,18 @@ class WhyUsTranslation(TranslationOptions):
 @register(models.About)
 class WhyUsTranslation(TranslationOptions):
     fields = ('title', 'description')
+
+
+@register(models.ServiceType)
+class ServiceTypeTranslation(TranslationOptions):
+    fields = ('title',)
+
+
+@register(models.Projects)
+class ProjectsTranslation(TranslationOptions):
+    fields = ('title', )
+
+
+@register(models.Tag)
+class TagTranslation(TranslationOptions):
+    fields = ('name',)

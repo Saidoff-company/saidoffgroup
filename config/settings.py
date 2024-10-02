@@ -184,3 +184,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'main.pagination.PageNumberPagination',
     'PAGE_SIZE': 9,
 }
+
