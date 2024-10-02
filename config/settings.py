@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'django_filters',
     'corsheaders',
     # built in apps
     'main',
@@ -171,5 +172,17 @@ JAZZMIN_SETTINGS = {
     "changeform_format": "horizontal_tabs",
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     "language_chooser": False,
+}
+
+
+LANGUAGES = (
+    ('uz', 'Uzbekistan'),
+    ('ru', 'Russian'),
+    ('en', 'English'),
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'main.pagination.PageNumberPagination',
+    'PAGE_SIZE': 9,
 }
 

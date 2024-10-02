@@ -5,12 +5,18 @@ from .models import *
 class WhyUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyUs
+        fields = [
+            'id', 'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru', 'description_en'
+        ]
         fields = ['id', 'title', 'description']
 
 
 class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
+        fields = [
+            'id', 'title_uz', 'title_ru', 'title_en', 'information_uz', 'information_ru', 'information_en', 'image'
+        ]
         fields = ['id', 'information', 'image']
 
 
@@ -35,12 +41,20 @@ class PartnerSerializer(serializers.ModelSerializer):
 class ClientsFeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientsFeedback
+        fields = [
+            'id', 'full_name', 'image', 'profession_uz', 'profession_ru', 'profession_en', 'message_uz', 'message_ru',
+            'message_en'
+        ]
         fields = ['id', 'full_name', 'image', 'profession', 'message']
 
 
 class ServiceInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceInfo
+        fields = [
+            'id', 'title_uz', 'title_ru', 'title_en', 'image', 'description_uz', 'description_ru', 'description_en',
+            'services'
+        ]
         fields = ['id', 'title', 'image', 'description', 'services']
 
 
@@ -49,27 +63,44 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Services
-        fields = ['id', 'title', 'service_info']
+        fields = ['id', 'title_uz', 'title_ru', 'title_ru', 'title_en', 'service_info']
 
 
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
+        fields = [
+            'id', 'full_name', 'occupation_uz', 'occupation_ru', 'occupation_en', 'image', 'description_uz',
+            'description_ru', 'description_en'
+        ]
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = [
+            'id', 'name_uz', 'name_ru', 'name_en'
+        ]
         fields = ['id', 'full_name', 'occupation', 'image']
 
 
 class ProjectSerializer(serializers.ModelSerializer):
     service = ServiceSerializer(read_only=True)
+    tags = TagSerializer(read_only=True, many=True)
 
     class Meta:
         model = Projects
-        fields = '__all__'
+        fields = [
+            'id', 'title_uz', 'title_ru', 'title_en', 'service', 'image', 'link', 'tags'
+        ]
 
 
 class FAQTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = FAQType
-        fields = '__all__'
+        fields = [
+            'id', 'title_uz', 'title_ru', 'title_en'
+        ]
 
 
 class FAQSerializer(serializers.ModelSerializer):
@@ -77,20 +108,26 @@ class FAQSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FAQ
-        fields = '__all__'
+        fields = ['id', 'question_uz', 'question_ru', 'question_en', 'answer_uz', 'answer_ru', 'answer_en', 'type']
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    services = ServiceSerializer(read_only=True)
     service = ServiceSerializer(read_only=True)
 
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = [
+            'full_name', 'phone_number', 'services'
+        ]
 
 
 class AboutSerializers(serializers.ModelSerializer):
     class Meta:
         model = About
+        fields = [
+            'id', 'title_uz', 'title_ru', 'title_en', 'image', 'description_uz', 'description_ru', 'description_en'
+        ]
         fields = '__all__'
 
 

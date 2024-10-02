@@ -14,6 +14,7 @@ urlpatterns = [
     path('whyus/', WhyUsView.as_view(), name='whyus'),
     path('partners/', PartnersView.as_view(), name='partners'),
     path('about/', AboutView.as_view(), name='about'),
+    path('projects/', ProjectsView.as_view(), name='projects'),
     path('projects/<str:service_name>/', ProjectsView.as_view(), name='projects-by-service'),
     path('price/', PricePlanView.as_view(), name='price-plan'),
     path('tag/', TagListView.as_view(), name='tag'),

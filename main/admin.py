@@ -1,4 +1,20 @@
 from django.contrib import admin
+from .models import (WhyUs,
+                     Certificate,
+                     Services,
+                     ServiceInfo,
+                     SocialMedia,
+                     Subscribe,
+                     Projects,
+                     Team,
+                     FAQ,
+                     FAQType,
+                     Order,
+                     Partnership,
+                     ClientsFeedback,
+                     About,
+                     ServiceType,
+                     Tag)
 from .models import *
 from modeltranslation.admin import TranslationAdmin
 
@@ -88,10 +104,19 @@ class PricePlanAdmin(TranslationAdmin):
 
 
 
+class ServiceInline(admin.StackedInline):
+    model = Services
+    extra = 0
+
+
+@admin.register(ServiceType)
+class ServiceTypeAdmin(TranslationAdmin):
+    list_display = ('id', 'title',)
+    inlines = [ServiceInline]
+
+
 admin.site.register(Certificate, TranslationAdmin)
-# admin.site.register(ServiceInfo)
 admin.site.register(Partnership)
 admin.site.register(SocialMedia)
 admin.site.register(FAQType, TranslationAdmin)
-
-
+admin.site.register(Tag)
