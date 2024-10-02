@@ -60,3 +60,11 @@ class ProjectsTranslation(TranslationOptions):
 @register(models.Tag)
 class TagTranslation(TranslationOptions):
     fields = ('name',)
+@register(models.Feature)
+class FeatureTranslation(TranslationOptions):
+    fields = ('title',)
+
+
+@register(models.PricePlan)
+class PricePlanTranslation(TranslationOptions):
+    fields = ('title',)

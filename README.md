@@ -10,4 +10,6 @@ pip install pillow
 pip install drf_yasg
 pip install django-cors-headers
 pip install psycopg2-binary
+pip install django-modeltranslation==0.18.9
+pip install django-jazzmin
 ```

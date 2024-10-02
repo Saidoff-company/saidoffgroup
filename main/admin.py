@@ -15,6 +15,7 @@ from .models import (WhyUs,
                      About,
                      ServiceType,
                      Tag)
+from .models import *
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -89,6 +90,18 @@ class FAQAdmin(TranslationAdmin):
 class AboutAdmin(TranslationAdmin):
     list_display = ('id', 'title')
     list_display_links = ('id', 'title')
+
+@admin.register(Feature)
+class FeatureAdmin(TranslationAdmin):
+    list_display = ('id', 'title', 'tick')
+    list_display_links = ('id',)
+
+
+@admin.register(PricePlan)
+class PricePlanAdmin(TranslationAdmin):
+    list_display = ('id', 'title', 'price', 'limit_date', 'limit_user')
+    list_display_links = ('id',)
+
 
 
 class ServiceInline(admin.StackedInline):

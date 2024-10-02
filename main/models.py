@@ -22,7 +22,7 @@ class Order(TimeStamp):
     phone_number = models.CharField(max_length=212)
     is_checked = models.BooleanField(default=False)
     services = models.ForeignKey('Services', on_delete=models.CASCADE)
-
+    message = models.TextField()
     def __str__(self):
         return self.full_name
 
@@ -100,6 +100,9 @@ class Tag(TimeStamp):
     def __str__(self):
         return self.name
 
+class Tag(models.Model):
+    title = models.CharField(_("title"), max_length=125)
+
 
 class Projects(TimeStamp):
     title = models.CharField(_("title"), max_length=212)
@@ -107,6 +110,7 @@ class Projects(TimeStamp):
     image = models.ImageField(upload_to='project/')
     link = models.URLField(null=True, blank=True)
     tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField('Tag')
 
     def __str__(self):
         return self.title
@@ -134,6 +138,24 @@ class About(TimeStamp):
     title = models.CharField(_("title"), max_length=212)
     image = models.ImageField(upload_to='about/')
     description = models.TextField(_("description"))
+
+    def __str__(self):
+        return self.title
+
+
+class Feature(models.Model):
+    title = models.CharField(_("title"), max_length=125)
+    tick = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+class PricePlan(models.Model):
+    title = models.CharField(_("title"), max_length=125)
+    price = models.FloatField()
+    limit_date = models.CharField(max_length=125)
+    limit_user = models.CharField(max_length=125)
+    features = models.ManyToManyField(Feature)
 
     def __str__(self):
         return self.title

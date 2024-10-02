@@ -8,6 +8,7 @@ class WhyUsSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru', 'description_en'
         ]
+        fields = ['id', 'title', 'description']
 
 
 class CertificateSerializer(serializers.ModelSerializer):
@@ -16,6 +17,7 @@ class CertificateSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title_uz', 'title_ru', 'title_en', 'information_uz', 'information_ru', 'information_en', 'image'
         ]
+        fields = ['id', 'information', 'image']
 
 
 class SocialMediaSerializer(serializers.ModelSerializer):
@@ -43,6 +45,7 @@ class ClientsFeedbackSerializer(serializers.ModelSerializer):
             'id', 'full_name', 'image', 'profession_uz', 'profession_ru', 'profession_en', 'message_uz', 'message_ru',
             'message_en'
         ]
+        fields = ['id', 'full_name', 'image', 'profession', 'message']
 
 
 class ServiceInfoSerializer(serializers.ModelSerializer):
@@ -52,6 +55,7 @@ class ServiceInfoSerializer(serializers.ModelSerializer):
             'id', 'title_uz', 'title_ru', 'title_en', 'image', 'description_uz', 'description_ru', 'description_en',
             'services'
         ]
+        fields = ['id', 'title', 'image', 'description', 'services']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -77,6 +81,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'name_uz', 'name_ru', 'name_en'
         ]
+        fields = ['id', 'full_name', 'occupation', 'image']
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -108,6 +113,7 @@ class FAQSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     services = ServiceSerializer(read_only=True)
+    service = ServiceSerializer(read_only=True)
 
     class Meta:
         model = Order
@@ -122,3 +128,22 @@ class AboutSerializers(serializers.ModelSerializer):
         fields = [
             'id', 'title_uz', 'title_ru', 'title_en', 'image', 'description_uz', 'description_ru', 'description_en'
         ]
+        fields = '__all__'
+
+
+class PricePlanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PricePlan
+        fields = ('title', 'limit_date', 'limit_user', 'features', 'price')
+
+
+class FeaturesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feature
+        fields = ('title', 'tick')
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'title')

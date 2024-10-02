@@ -1,0 +1,4 @@
+Requirement already satisfied: django-modeltranslation in ./venv/lib/python3.11/site-packages (0.19.7)
+Requirement already satisfied: Django>=4.2 in ./venv/lib/python3.11/site-packages (from django-modeltranslation) (4.2.16)
+Requirement already satisfied: asgiref<4,>=3.6.0 in ./venv/lib/python3.11/site-packages (from Django>=4.2->django-modeltranslation) (3.8.1)
+Requirement already satisfied: sqlparse>=0.3.1 in ./venv/lib/python3.11/site-packages (from Django>=4.2->django-modeltranslation) (0.5.1)

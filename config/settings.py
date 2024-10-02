@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'django_filters',
-
+    'corsheaders',
     # built in apps
     'main',
 ]
@@ -109,7 +109,6 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static/'
 
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = BASE_DIR / 'media'
 
 LANGUAGES = (
@@ -117,6 +116,7 @@ LANGUAGES = (
     ('en', 'USA'),
     ('ru', 'Russia'),
 )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -173,6 +173,7 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     "language_chooser": False,
 }
+
 
 LANGUAGES = (
     ('uz', 'Uzbekistan'),

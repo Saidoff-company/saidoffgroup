@@ -27,6 +27,13 @@ class ProjectsView(generics.ListAPIView):
     serializer_class = ProjectSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProjectFilter
+    serializer_class = ProjectSerializer
+
+    def get_queryset(self):
+        service_name = self.kwargs.get('service_name')
+        if service_name:
+            return Projects.objects.filter(service__name=service_name)
+        return Projects.objects.all()
 
 
 class ServiceView(generics.ListAPIView):
@@ -45,23 +52,23 @@ class ServiceInfoView(generics.ListAPIView):
 
 
 class ClientsFeedbackView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = ClientsFeedback.objects.all()
+    serializer_class = ClientsFeedbackSerializer
 
 
 class CertificateView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer
 
 
 class FAQView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = FAQ.objects.all()
+    serializer_class = FAQSerializer
 
 
 class FAQTypeView(generics.ListAPIView):
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    queryset = FAQType.objects.all()
+    serializer_class = FAQTypeSerializer
 
 
 class WhyUsView(generics.ListAPIView):
@@ -77,3 +84,18 @@ class PartnersView(generics.ListAPIView):
 class AboutView(generics.ListAPIView):
     queryset = About.objects.all()
     serializer_class = AboutSerializers
+
+
+class PricePlanView(generics.ListAPIView):
+    queryset = PricePlan.objects.all()
+    serializer_class = PricePlanSerializer
+
+
+class TagListView(generics.ListAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
+class FeaturesListView(generics.ListAPIView):
+    queryset =  Feature.objects.all()
+    serializer_class = FeaturesSerializer
