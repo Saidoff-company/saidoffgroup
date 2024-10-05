@@ -93,13 +93,6 @@ class ServiceType(TimeStamp):
     def __str__(self):
         return self.title
 
-
-class Tag(TimeStamp):
-    name = models.CharField(max_length=212)
-
-    def __str__(self):
-        return self.name
-
 class Tag(models.Model):
     title = models.CharField(_("title"), max_length=125)
 
@@ -110,7 +103,6 @@ class Projects(TimeStamp):
     image = models.ImageField(upload_to='project/')
     link = models.URLField(null=True, blank=True)
     tags = models.ManyToManyField(Tag)
-    tags = models.ManyToManyField('Tag')
 
     def __str__(self):
         return self.title

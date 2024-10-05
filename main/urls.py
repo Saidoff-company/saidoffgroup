@@ -19,5 +19,5 @@ urlpatterns = [
     path('price/', PricePlanView.as_view(), name='price-plan'),
     path('tag/', TagListView.as_view(), name='tag'),
     path('features-list/', FeaturesListView.as_view(), name='features-list'),
-
+    path('service-type/', ServiceTypeListApiView.as_view(), name='service-type-list'),
 ]
