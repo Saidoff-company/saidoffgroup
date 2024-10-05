@@ -54,12 +54,14 @@ class ServiceTypeTranslation(TranslationOptions):
 
 @register(models.Projects)
 class ProjectsTranslation(TranslationOptions):
-    fields = ('title', )
+    fields = ('title',)
 
 
 @register(models.Tag)
 class TagTranslation(TranslationOptions):
-    fields = ('name',)
+    fields = ('title',)
+
+
 @register(models.Feature)
 class FeatureTranslation(TranslationOptions):
     fields = ('title',)
